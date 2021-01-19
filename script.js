@@ -80,8 +80,8 @@ const effectivenessObj = {
     no: []
   },
   dark: {
-    super: [],
-    not: ['rock', 'steel'],
+    super: ['psychic', 'ghost'],
+    not: ['fighting', 'dark', 'steel'],
     no: ['ghost']
   },
   steel: {

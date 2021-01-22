@@ -245,6 +245,13 @@ attackType.addEventListener('change', calculateEffectiveness);
 defenseType1.addEventListener('change', calculateEffectiveness);
 defenseType2.addEventListener('change', calculateEffectiveness);
 gen2through5btn.addEventListener('click', toggleBtns);
-gen6btn.addEventListener('click', toggleBtns);
+gen6btn.addEventListener('click', evt => {
+  if(!evt.currentTarget.classList.contains('active'))
+  evt.currentTarget.classList.toggle('active');
+  const fairyOption = document.createElement('option');
+  fairyOption.innerHTML = 'Fairy';
+  defenseType1.appendChild(fairyOption);
+  defenseType2.appendChild(fairyOption);
+});
 
 updateDOM();

@@ -2,6 +2,8 @@ const effectivenessContainer = document.querySelector('.effectiveness-container'
 const attackType = document.getElementById('attack-type');
 const defenseType1 = document.getElementById('defense-type-1');
 const defenseType2 = document.getElementById('defense-type-2');
+const gen2through5btn = document.getElementById('gen-2-5-btn');
+const gen6btn = document.getElementById('gen-6-btn');
 
 // Gen 2-5 effectiveness object
 const oldEffectivenessObj = {
@@ -182,6 +184,7 @@ const currentEffectivenessObj = {
 }
 
 let totalEffectiveness = "x1";
+let selectedGen = gen6btn;
 
 // Caclulate effectiveness
 function calculateEffectiveness(obj) {
@@ -225,6 +228,9 @@ function calculateEffectiveness(obj) {
   updateDOM();
 }
 
+function toggleBtns() {
+}
+
 // Update DOM
 function updateDOM() {
   const effectivenessEl = document.createElement('p');
@@ -238,5 +244,7 @@ function updateDOM() {
 attackType.addEventListener('change', calculateEffectiveness);
 defenseType1.addEventListener('change', calculateEffectiveness);
 defenseType2.addEventListener('change', calculateEffectiveness);
+gen2through5btn.addEventListener('click', toggleBtns);
+gen6btn.addEventListener('click', toggleBtns);
 
 updateDOM();

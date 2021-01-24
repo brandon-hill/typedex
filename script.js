@@ -128,12 +128,12 @@ const currentEffectivenessObj = {
   },
   fighting: {
     super: ['normal', 'ice', 'rock', 'dark', 'steel'],
-    not: ['poison', 'flying', 'psychic', 'bug'],
+    not: ['poison', 'flying', 'psychic', 'bug', 'fairy'],
     no: ['ghost']
   },
   poison: {
-    super: ['grass'],
-    not: ['poison', 'ground', 'rock', 'ghost'],
+    super: ['grass', 'fairy'],
+    not: ['poison', 'ground', 'rock'],
     no: ['steel']
   },
   ground: {
@@ -153,7 +153,7 @@ const currentEffectivenessObj = {
   },
   bug: {
     super: ['grass', 'psychic', 'dark'],
-    not: ['fire', 'fighting', 'poison', 'flying', 'ghost', 'steel'],
+    not: ['fire', 'fighting', 'poison', 'flying', 'ghost', 'steel', 'fairy'],
     no: []
   },
   rock: {
@@ -163,28 +163,33 @@ const currentEffectivenessObj = {
   },
   ghost: {
     super: ['psychic', 'ghost'],
-    not: ['dark', 'steel'],
+    not: ['dark'],
     no: ['normal']
   },
   dragon: {
     super: ['dragon'],
     not: ['steel'],
-    no: []
+    no: ['fairy']
   },
   dark: {
     super: ['psychic', 'ghost'],
-    not: ['fighting', 'dark', 'steel'],
+    not: ['fighting', 'dark', 'fairy'],
     no: ['ghost']
   },
   steel: {
-    super: ['ice', 'rock'],
+    super: ['ice', 'rock', 'fairy'],
     not: ['fire', 'water', 'electric', 'steel'],
+    no: []
+  },
+  fairy: {
+    super: ['fighting', 'dragon', 'dark'],
+    not: ['fire', 'poison', 'steel'],
     no: []
   }
 }
 
 let totalEffectiveness = "x1";
-let selectedGen = gen6btn;
+let selectedGen = currentEffectivenessObj;
 
 // Caclulate effectiveness
 function calculateEffectiveness(obj) {
@@ -241,17 +246,44 @@ function updateDOM() {
 }
 
 // Event listeners
-attackType.addEventListener('change', calculateEffectiveness);
-defenseType1.addEventListener('change', calculateEffectiveness);
-defenseType2.addEventListener('change', calculateEffectiveness);
-gen2through5btn.addEventListener('click', toggleBtns);
-gen6btn.addEventListener('click', evt => {
-  if(!evt.currentTarget.classList.contains('active'))
-  evt.currentTarget.classList.toggle('active');
-  const fairyOption = document.createElement('option');
-  fairyOption.innerHTML = 'Fairy';
-  defenseType1.appendChild(fairyOption);
-  defenseType2.appendChild(fairyOption);
+attackType.addEventListener('change', calculateEffectiveness(selectedGen));
+defenseType1.addEventListener('change', calculateEffectiveness(selectedGen));
+defenseType2.addEventListener('change', calculateEffectiveness(selectedGen));
+
+gen2through5btn.addEventListener('click', e => {
+  selectedGen = oldEffectivenessObj;
+
+  if(!e.currentTarget.classList.contains('selected')) {
+
+    // Remove fairy option
+    defenseType1.remove(17);
+    defenseType2.remove(18);
+
+    // Toggle buttons
+    e.currentTarget.classList.toggle('selected');
+    gen6btn.classList.toggle('selected');
+  }  
+});
+
+gen6btn.addEventListener('click', e => {
+  if(!e.currentTarget.classList.contains('selected')) {
+    selectedGen = currentEffectivenessObj;
+
+    // Add fairy option
+    const fairyOption1 = document.createElement('option');
+    fairyOption1.setAttribute('value', 'fairy');
+    fairyOption1.innerHTML = 'Fairy';
+    defenseType1.appendChild(fairyOption1);
+
+    const fairyOption2 = document.createElement('option');
+    fairyOption2.setAttribute('value', 'fairy');
+    fairyOption2.innerHTML = 'Fairy';
+    defenseType2.appendChild(fairyOption2);
+
+    // Toggle buttons
+    e.currentTarget.classList.toggle('selected');
+    gen2through5btn.classList.toggle('selected');
+  }  
 });
 
 updateDOM();

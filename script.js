@@ -192,24 +192,22 @@ let totalEffectiveness = "x1";
 let selectedGen = currentEffectivenessObj;
 
 // Caclulate effectiveness
-function calculateEffectiveness(obj) {
+function calculateEffectiveness() {
+  if(defenseType2.value == defenseType1.value) {
+    alert('Choose a different secondary type');
+  }
+
   const selectedAttackType = attackType.value;
   const selectedDefenseType1 = defenseType1.value;
   const selectedDefenseType2 = defenseType2.value;
 
-  // Remove selected type from other list
-  defenseType1.remove(defenseType2.selectedIndex);
-  defenseType2.remove(defenseType1.selectedIndex);
-  
-
   // Find effectiveness against first defense type
   let effectiveness1 = 1;
-
-  if (obj[selectedAttackType].super.includes(selectedDefenseType1)) {
+  if (selectedGen[selectedAttackType].super.includes(selectedDefenseType1)) {
     effectiveness1 = 2;
-  } else if (obj[selectedAttackType].not.includes(selectedDefenseType1)) {
+  } else if (selectedGen[selectedAttackType].not.includes(selectedDefenseType1)) {
     effectiveness1 = 0.5;
-  } else if (obj[selectedAttackType].no.includes(selectedDefenseType1)) {
+  } else if (selectedGen[selectedAttackType].no.includes(selectedDefenseType1)) {
     effectiveness1 = 0;
   } else {
     effectiveness1 = 1;
@@ -217,11 +215,11 @@ function calculateEffectiveness(obj) {
   
   // Find effectiveness against second defense type
   let effectiveness2 = 1;
-  if (obj[selectedAttackType].super.includes(selectedDefenseType2)) {
+  if (selectedGen[selectedAttackType].super.includes(selectedDefenseType2)) {
     effectiveness2 = 2;
-  } else if (obj[selectedAttackType].not.includes(selectedDefenseType2)) {
+  } else if (selectedGen[selectedAttackType].not.includes(selectedDefenseType2)) {
     effectiveness2 = 0.5;
-  } else if (obj[selectedAttackType].no.includes(selectedDefenseType2)) {
+  } else if (selectedGen[selectedAttackType].no.includes(selectedDefenseType2)) {
     effectiveness2 = 0;
   } else {
     effectiveness2 = 1;
@@ -231,9 +229,6 @@ function calculateEffectiveness(obj) {
   totalEffectiveness = `x${effectiveness1 * effectiveness2}`;
 
   updateDOM();
-}
-
-function toggleBtns() {
 }
 
 // Update DOM
@@ -246,9 +241,9 @@ function updateDOM() {
 }
 
 // Event listeners
-attackType.addEventListener('change', calculateEffectiveness(selectedGen));
-defenseType1.addEventListener('change', calculateEffectiveness(selectedGen));
-defenseType2.addEventListener('change', calculateEffectiveness(selectedGen));
+attackType.addEventListener('change', calculateEffectiveness);
+defenseType1.addEventListener('change', calculateEffectiveness)
+defenseType2.addEventListener('change', calculateEffectiveness);
 
 gen2through5btn.addEventListener('click', e => {
   selectedGen = oldEffectivenessObj;
@@ -262,6 +257,8 @@ gen2through5btn.addEventListener('click', e => {
     // Toggle buttons
     e.currentTarget.classList.toggle('selected');
     gen6btn.classList.toggle('selected');
+
+    calculateEffectiveness();
   }  
 });
 
@@ -283,7 +280,9 @@ gen6btn.addEventListener('click', e => {
     // Toggle buttons
     e.currentTarget.classList.toggle('selected');
     gen2through5btn.classList.toggle('selected');
-  }  
+
+    calculateEffectiveness(); 
+  } 
 });
 
 updateDOM();

@@ -188,18 +188,37 @@ const currentEffectivenessObj = {
   }
 }
 
-let totalEffectiveness = "x1";
+let totalEffectiveness = 'x1';
 let selectedGen = currentEffectivenessObj;
 
 // Caclulate effectiveness
 function calculateEffectiveness() {
-  if(defenseType2.value == defenseType1.value) {
-    alert('Choose a different secondary type');
-  }
-
   const selectedAttackType = attackType.value;
   const selectedDefenseType1 = defenseType1.value;
   const selectedDefenseType2 = defenseType2.value;
+
+  // Initialize select options
+  let keyElements1 = '';
+  let keyElements2 = '<option value="none">None</option>';
+
+  // Populate first select without the second selected item
+  Object.keys(selectedGen).forEach((item) => {
+    if(item !== selectedDefenseType2) {
+      keyElements1.concat(`<option value="${item}">${item.charAt(0).toUpperCase() + item.slice(1)}</option>`);
+      console.log(keyElements1)
+    }
+  });
+  defenseType1.innerHTML = `${keyElements1}`;
+  
+  // Populate second select without the first selected item
+  Object.keys(selectedGen).forEach((item) => {
+    if (item != selectedDefenseType1) {
+      keyElements2.concat(`<option value="${item}">${item.charAt(0).toUpperCase + item.slice(1)}</option>`);
+      console.log(keyElements2)
+    }
+  });
+  defenseType2.innerHTML = keyElements2;
+
 
   // Find effectiveness against first defense type
   let effectiveness1 = 1;
@@ -251,6 +270,7 @@ gen2through5btn.addEventListener('click', e => {
   if(!e.currentTarget.classList.contains('selected')) {
 
     // Remove fairy option
+    attackType.remove(17);
     defenseType1.remove(17);
     defenseType2.remove(18);
 
@@ -270,12 +290,17 @@ gen6btn.addEventListener('click', e => {
     const fairyOption1 = document.createElement('option');
     fairyOption1.setAttribute('value', 'fairy');
     fairyOption1.innerHTML = 'Fairy';
-    defenseType1.appendChild(fairyOption1);
+    attackType.appendChild(fairyOption1);
 
     const fairyOption2 = document.createElement('option');
     fairyOption2.setAttribute('value', 'fairy');
     fairyOption2.innerHTML = 'Fairy';
-    defenseType2.appendChild(fairyOption2);
+    defenseType1.appendChild(fairyOption2);
+
+    const fairyOption3 = document.createElement('option');
+    fairyOption1.setAttribute('value', 'fairy');
+    fairyOption1.innerHTML = 'Fairy';
+    defenseType2.appendChild(fairyOption3);
 
     // Toggle buttons
     e.currentTarget.classList.toggle('selected');

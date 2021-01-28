@@ -204,7 +204,7 @@ function calculateEffectiveness() {
   // Populate first select without the second selected item
   Object.keys(selectedGen).forEach((item) => {
     if(item !== selectedDefenseType2) {
-      keyElements1.concat(`<option value="${item}">${item.charAt(0).toUpperCase() + item.slice(1)}</option>`);
+      keyElements1 += `<option value="${item}">${item.charAt(0).toUpperCase() + item.slice(1)}</option>`;
       console.log(keyElements1)
     }
   });
@@ -213,7 +213,7 @@ function calculateEffectiveness() {
   // Populate second select without the first selected item
   Object.keys(selectedGen).forEach((item) => {
     if (item != selectedDefenseType1) {
-      keyElements2.concat(`<option value="${item}">${item.charAt(0).toUpperCase + item.slice(1)}</option>`);
+      keyElements2 += `<option value="${item}">${item.charAt(0).toUpperCase() + item.slice(1)}</option>`;
       console.log(keyElements2)
     }
   });

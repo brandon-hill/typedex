@@ -197,27 +197,20 @@ function calculateEffectiveness() {
   const selectedDefenseType1 = defenseType1.value;
   const selectedDefenseType2 = defenseType2.value;
 
-  // Initialize select options
-  let keyElements1 = '';
-  let keyElements2 = '<option value="none">None</option>';
+  // Ensure no duplicate defending types
+  const defense1Types = defenseType1.getElementsByTagName('option');
+  for (var i = 0; i < defense1Types.length; i++) {
+    (defense1Types[i].value == selectedDefenseType2)
+      ? defense1Types[i].disabled = true
+      : defense1Types[i].disabled = false;
+  }
 
-  // Populate first select without the second selected item
-  Object.keys(selectedGen).forEach((item) => {
-    if(item !== selectedDefenseType2) {
-      keyElements1 += `<option value="${item}">${item.charAt(0).toUpperCase() + item.slice(1)}</option>`;
-      console.log(keyElements1)
-    }
-  });
-  defenseType1.innerHTML = `${keyElements1}`;
-  
-  // Populate second select without the first selected item
-  Object.keys(selectedGen).forEach((item) => {
-    if (item != selectedDefenseType1) {
-      keyElements2 += `<option value="${item}">${item.charAt(0).toUpperCase() + item.slice(1)}</option>`;
-      console.log(keyElements2)
-    }
-  });
-  defenseType2.innerHTML = keyElements2;
+  const defense2Types = defenseType2.getElementsByTagName('option');
+  for (var i = 0; i < defense2Types.length; i++) {
+    (defense2Types[i].value == selectedDefenseType1)
+      ? defense2Types[i].disabled = true
+      : defense2Types[i].disabled = false;
+  }
 
 
   // Find effectiveness against first defense type

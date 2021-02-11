@@ -4,6 +4,7 @@
 
 body {
 	background-color: #15252b;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23546b74' fill-opacity='0.34' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 	color: #15252b;
 	display: flex;
 	flex-direction: column;
@@ -56,7 +57,7 @@ button {
 	font-weight: bold;
 	margin: 2px;
 	outline: none;
-	background-color: #fff;
+	background-color: #ebe4e4;
 }
 
 button:hover {
@@ -65,7 +66,7 @@ button:hover {
 }
 
 .selected {
-	background-color: #b10000;
+	background-color: #ac2828;
 	color: #fff;
 	box-shadow: -3px 4px 6px rgba(0, 0, 0, 0.6);
 	padding: 14px;
@@ -74,7 +75,7 @@ button:hover {
 }
 
 .selected:hover {
-	background-color: #b10000;
+	background-color: #ac2828;
 	transform: scale(1);
 }
 
@@ -87,7 +88,7 @@ button:hover {
 	border-top-left-radius: 10px;
 	min-width: 320px;
 	max-width: 560px;
-	background-color: #ffe4e4;
+	background-color: #ebe4e4;
 	box-shadow: -3px 4px 6px rgba(0, 0, 0, 0.6);
 }
 
@@ -105,10 +106,15 @@ select {
 	cursor: pointer;
 	display: block;
 	width: 100%;
-	height: 30px;
+	padding-left: 0.3em;
+	height: 32px;
 	margin-bottom: 8px;
-	border: 2px solid #380000;
+	border: 2px solid #3800009c;
 	border-radius: 6px;
+}
+
+select:focus{
+	border: 3px solid #ac2828;
 }
 
 .attack-container {
@@ -142,7 +148,7 @@ select {
 	min-width: 320px;
 	max-width: 560px;
 	color: #fffafa;
-	background-color: #b10000;
+	background-color: #ac2828;
 	padding: 20px;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
@@ -152,7 +158,7 @@ select {
 
 h3 {
 	font-size: 1.4rem;
-	margin-top: 30px;
+	margin: 30px auto 14px;
 }
 
 .multiplier {

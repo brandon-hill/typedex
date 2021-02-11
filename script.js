@@ -291,8 +291,8 @@ gen6btn.addEventListener('click', e => {
     defenseType1.appendChild(fairyOption2);
 
     const fairyOption3 = document.createElement('option');
-    fairyOption1.setAttribute('value', 'fairy');
-    fairyOption1.innerHTML = 'Fairy';
+    fairyOption3.setAttribute('value', 'fairy');
+    fairyOption3.innerHTML = 'Fairy';
     defenseType2.appendChild(fairyOption3);
 
     // Toggle buttons

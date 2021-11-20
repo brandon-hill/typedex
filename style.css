@@ -177,7 +177,7 @@ h3 {
 
 #chart {
 	border-radius: 14px;
-	max-width: 752px;
+	max-width: 100%;
 }
 
 footer {
@@ -253,6 +253,11 @@ a {
 
 	.multiplier {
 		font-size: 2rem;
+	}
+
+	#chart {
+		max-width: 360px;
+		border-radius: 0;
 	}
 
 	footer {

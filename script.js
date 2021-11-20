@@ -271,6 +271,9 @@ gen2through5btn.addEventListener('click', e => {
     e.currentTarget.classList.toggle('selected');
     gen6btn.classList.toggle('selected');
 
+    // Toggle chart
+    document.getElementById('chart').src='assets/typechart.png';
+
     calculateEffectiveness();
   }  
 });
@@ -298,6 +301,9 @@ gen6btn.addEventListener('click', e => {
     // Toggle buttons
     e.currentTarget.classList.toggle('selected');
     gen2through5btn.classList.toggle('selected');
+
+    // Toggle chart
+    document.getElementById('chart').src='assets/typechart_gen6.png';
 
     calculateEffectiveness(); 
   } 

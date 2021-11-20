@@ -3,8 +3,8 @@
 }
 
 html {
-	background-color: #15252b;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23030304' fill-opacity='0.18'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
+	background-color: #002b3a;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23094960' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 body {
@@ -14,7 +14,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
-	font-family: 'Rubik', Helvetica, sans-serif;
+	font-family: 'Inter', sans-serif;
 	margin: 0;
 }
 
@@ -22,21 +22,24 @@ h1 {
 	color: #fffafa;
 	font-size: 3.2rem;
 	margin-bottom: 0;
-	text-shadow: 0px 2px 6px rgb(0, 0, 0);
+	text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.8);
+	font-weight: 800;
 }
 
 #header-container {
 	font-size: 1.2rem;
 	width: 100%;
-	max-width: 560px;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.2);
+	margin: 15px 0 30px;
 }
 
 .header {
-	color: #fffafa;
+	color: #aad3e2;
 	padding: 12px;
+	font-size: 1.4rem;
 	margin: 0 0 10px;
 }
 
@@ -48,7 +51,9 @@ h1 {
 .generation-label {
 	color: #fff;
 	font-size: 18px;
+	font-weight: 600;
 	margin: 10px;
+	display: inline;
 }
 
 button {
@@ -90,17 +95,17 @@ button:hover {
 	border-top-left-radius: 10px;
 	min-width: 320px;
 	max-width: 560px;
-	background-color: #ebe4e4;
+	background-color: #f3eded;
 	box-shadow: -3px 4px 6px rgba(0, 0, 0, 0.6);
 }
 
 h2 {
 	margin-top: 0;
 	font-size: 1.2rem;
+	font-weight: 800;
 }
 
 label {
-	font-weight: bold;
 	margin-bottom: 8px;
 }
 
@@ -122,27 +127,23 @@ select:focus{
 .attack-container {
 	width: 100%;
 	margin-right: 8px;
-	margin-bottom: -46px;
 	z-index: 2000;
 	display: flex;
 	flex-direction: column;
-	padding: 20px;
+	padding: 30px;
 	background: #fff;
 	border-radius: 10px;
-	box-shadow: -1px 2px 6px #62131388;
 }
 
 .defend-container {
 	width: 100%;
 	margin-left: 8px;
-	margin-bottom: -46px;
 	z-index: 2000;
 	display: flex;
 	flex-direction: column;
-	padding: 20px;
+	padding: 30px;
 	background: #fff;
 	border-radius: 10px;
-	box-shadow: -1px 2px 6px #62131388;
 }
 
 .effectiveness-container {
@@ -156,11 +157,12 @@ select:focus{
 	border-bottom-right-radius: 10px;
 	box-shadow: -3px 4px 6px rgba(0, 0, 0, 0.6);
 	text-align: center;
+	margin-bottom: 5vh;
 }
 
 h3 {
 	font-size: 1.4rem;
-	margin: 30px auto 14px;
+	margin: 10px auto 20px;
 }
 
 .multiplier {
@@ -171,6 +173,11 @@ h3 {
 	background-color: #620000;
 	color: #fffafa;
 	margin: 0;
+}
+
+#chart {
+	border-radius: 14px;
+	max-width: 752px;
 }
 
 footer {
